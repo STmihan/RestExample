@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackRestExample.Web", "BackRestExample.Web\BackRestExample.Web.csproj", "{740454E1-500A-4CDA-98FB-9E6DDABCFACB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackRestExample.Domain", "BackRestExample.Domain\BackRestExample.Domain.csproj", "{5E194603-4372-4465-960C-9A92E868B868}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{740454E1-500A-4CDA-98FB-9E6DDABCFACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740454E1-500A-4CDA-98FB-9E6DDABCFACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740454E1-500A-4CDA-98FB-9E6DDABCFACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740454E1-500A-4CDA-98FB-9E6DDABCFACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E194603-4372-4465-960C-9A92E868B868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E194603-4372-4465-960C-9A92E868B868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E194603-4372-4465-960C-9A92E868B868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E194603-4372-4465-960C-9A92E868B868}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
