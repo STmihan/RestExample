@@ -11,11 +11,11 @@ export const App: FC = () => {
   return (
     <div>
       <Routes>
-        <Route path='/RestExample/notes/:noteId' element={<OneNotePage/>}/>
-        <Route path='/RestExample/' element={<NotesPage/>}/>
-        <Route path='/RestExample/error-page-404' element={<ErrorPage statusCode={404}/>}/>
-        <Route path='/RestExample/error-page-500' element={<ErrorPage statusCode={500}/>}/>
-        <Route path='RestExample/*' element={<BlankPage/>}/>
+        <Route path={import.meta.env.BASE_URL + 'notes/:noteId'} element={<OneNotePage/>}/>
+        <Route path={import.meta.env.BASE_URL} element={<NotesPage/>}/>
+        <Route path={import.meta.env.BASE_URL + 'error-page-404'} element={<ErrorPage statusCode={404}/>}/>
+        <Route path={import.meta.env.BASE_URL + 'error-page-500'} element={<ErrorPage statusCode={500}/>}/>
+        <Route path={import.meta.env.BASE_URL + '*'} element={<BlankPage/>}/>
       </Routes>
     </div>
   );

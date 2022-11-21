@@ -2,4 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 3rem;
+
+  .back {
+    position: absolute;
+    top: 2rem;
+    left: 5rem;
+  }
 }

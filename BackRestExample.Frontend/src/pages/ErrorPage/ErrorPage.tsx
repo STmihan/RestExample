@@ -20,8 +20,7 @@ export const ErrorPage: FC<Props> = ({statusCode}) => {
         <h3>Ops... Something went wrong...</h3>
         <HomeRoundedIcon
           sx={{height: 200, width: 200, marginTop: '3rem', cursor: 'pointer'}}
-          onClick={() => {navigate('/')}}
-
+          onClick={() => {navigate(import.meta.env.BASE_URL)}}
         />
       </div>
     </div>

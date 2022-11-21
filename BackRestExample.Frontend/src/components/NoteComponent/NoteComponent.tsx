@@ -9,6 +9,8 @@ import {DesktopDatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import {Dayjs} from "dayjs";
 import {date2string, string2date} from "../../utils/dayjsUtils";
+import {useNavigate} from "react-router-dom";
+import {useLongPress} from "use-long-press";
 
 interface Props {
   note: Note,
@@ -25,10 +27,16 @@ export const NoteComponent: FC<Props> = (
     onDeleteCallback
   }) => {
 
+  const navigate = useNavigate();
+
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [title, setTitle] = useState(note.title);
   const [description, setDescription] = useState(note.description);
   const [date, setDate] = useState<Dayjs | null>(string2date(note.date));
+
+  const bindLongPress = useLongPress(isEditing ? null : () => {
+    navigate(import.meta.env.BASE_URL + 'notes/' + note.id)
+  }, {threshold: 1500})
 
   const onEditButton = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -41,7 +49,7 @@ export const NoteComponent: FC<Props> = (
     setIsEditing(!isEditing)
   }
 
-  const onCardClick = () => {
+  const onCardClick = (e: React.MouseEvent) => {
     if (isEditing) {
       return;
     }
@@ -106,37 +114,39 @@ export const NoteComponent: FC<Props> = (
   );
 
   return (
-    <Card
-      sx={{minWidth: 350, maxWidth: 350}}
-      style={{backgroundColor: note.completed ? '#d5d5d5' : '#fff'}}
-      onClick={onCardClick}
-    >
-      <CardContent>
-        <CardHeader
-          sx={{padding: 0}}
-          title={isEditing ? titleEdit : note.title}
-          action={
-            <div>
-              {(isEditing && onDeleteCallback !== null) ? (
+    <div {...bindLongPress()}>
+      <Card
+        sx={{minWidth: 350, maxWidth: 350}}
+        style={{backgroundColor: note.completed ? '#d5d5d5' : '#fff'}}
+        onClick={onCardClick}
+      >
+        <CardContent>
+          <CardHeader
+            sx={{padding: 0}}
+            title={isEditing ? titleEdit : note.title}
+            action={
+              <div>
+                {(isEditing && onDeleteCallback !== null) ? (
+                  <IconButton
+                    disabled={date === null || !date.isValid() || title.trim() === ''}
+                    onClick={() => onDeleteCallback!(note)}
+                  >
+                    <DeleteIcon/>
+                  </IconButton>
+                ) : <div/>}
+
                 <IconButton
                   disabled={date === null || !date.isValid() || title.trim() === ''}
-                  onClick={() => onDeleteCallback!(note)}
+                  onClick={onEditButton}
                 >
-                  <DeleteIcon/>
+                  <ModeEditIcon/>
                 </IconButton>
-              ) : <div/>}
-
-              <IconButton
-                disabled={date === null || !date.isValid() || title.trim() === ''}
-                onClick={onEditButton}
-              >
-                <ModeEditIcon/>
-              </IconButton>
-            </div>
-          }
-        />
-        {isEditing ? editMode : cardMode}
-      </CardContent>
-    </Card>
+              </div>
+            }
+          />
+          {isEditing ? editMode : cardMode}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
