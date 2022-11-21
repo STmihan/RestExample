@@ -1,0 +1,15 @@
+.notes-page {
+  display: flex;
+  justify-content: center;
+
+  .container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 56rem;
+  }
+  .card {
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+}
