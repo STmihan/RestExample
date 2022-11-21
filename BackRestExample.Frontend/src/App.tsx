@@ -11,10 +11,10 @@ export const App: FC = () => {
   return (
     <div>
       <Routes>
-        <Route path='/notes/:noteId' element={<OneNotePage/>}/>
-        <Route path='/' element={<NotesPage/>}/>
-        <Route path='/error-page-404' element={<ErrorPage statusCode={404}/>}/>
-        <Route path='/error-page-500' element={<ErrorPage statusCode={500}/>}/>
+        <Route path='/RestExample/notes/:noteId' element={<OneNotePage/>}/>
+        <Route path='/RestExample/' element={<NotesPage/>}/>
+        <Route path='/RestExample/error-page-404' element={<ErrorPage statusCode={404}/>}/>
+        <Route path='/RestExample/error-page-500' element={<ErrorPage statusCode={500}/>}/>
         <Route path='*' element={<BlankPage/>}/>
       </Routes>
     </div>
