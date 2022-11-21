@@ -5,8 +5,16 @@ import {OneNotePage} from "./pages/OneNotePage/OneNotePage";
 import {Route, Routes, useNavigate} from "react-router-dom";
 import {ErrorPage} from "./pages/ErrorPage/ErrorPage";
 import {BlankPage} from "./pages/BlankPage/BlankPage";
+import {mockNotes} from "./types/types";
+import notesStore from "./stores/notesStore";
+import {observer} from "mobx-react-lite";
 
-export const App: FC = () => {
+export const App: FC = observer(() => {
+
+  useEffect(() => {
+    notesStore.setNotes(mockNotes)
+  }, []);
+
 
   return (
     <div>
@@ -19,4 +27,4 @@ export const App: FC = () => {
       </Routes>
     </div>
   );
-};
+});

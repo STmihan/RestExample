@@ -6,22 +6,21 @@ import {NoteComponent} from "../../components/NoteComponent/NoteComponent";
 import {useNavigate, useParams} from "react-router-dom";
 import {IconButton} from "@mui/material";
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
+import notesStore from "../../stores/notesStore";
+import {observer} from "mobx-react-lite";
 
-interface Props {
-
-}
-
-export const OneNotePage: FC<Props> = () => {
+export const OneNotePage: FC = observer(() => {
 
   const navigate = useNavigate();
   const noteIdStr = useParams().noteId;
+  const notes: Note[] = notesStore.notes;
 
   React.useEffect(() => {
     if (typeof noteIdStr === "string") {
-      if (!mockNotes.some(n => n.id === noteIdStr)) {
+      if (!notes.some(n => n.id === noteIdStr)) {
         navigate(import.meta.env.BASE_URL)
       } else {
-        setNote(mockNotes.find(n => n.id))
+        setNote(notes.find(n => n.id === noteIdStr))
       }
     }
   }, [])
@@ -49,4 +48,4 @@ export const OneNotePage: FC<Props> = () => {
       </div>
     </div>
   );
-};
+});
