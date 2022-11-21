@@ -14,7 +14,7 @@ interface Props {
   note: Note,
   editCallback: (note: Note) => void,
   onChangeStateCallback: (note: Note) => void,
-  onDeleteCallback: (note: Note) => void,
+  onDeleteCallback?: ((note: Note) => void) | null,
 }
 
 export const NoteComponent: FC<Props> = (
@@ -113,13 +113,14 @@ export const NoteComponent: FC<Props> = (
     >
       <CardContent>
         <CardHeader
+          sx={{padding: 0}}
           title={isEditing ? titleEdit : note.title}
           action={
             <div>
-              {isEditing ? (
+              {(isEditing && onDeleteCallback !== null) ? (
                 <IconButton
                   disabled={date === null || !date.isValid() || title.trim() === ''}
-                  onClick={() => onDeleteCallback(note)}
+                  onClick={() => onDeleteCallback!(note)}
                 >
                   <DeleteIcon/>
                 </IconButton>

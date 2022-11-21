@@ -69,7 +69,7 @@ export const CreateNodeComponent: FC<Props> = ({createCardCallback}) => {
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DesktopDatePicker
             label="Date desktop"
-            inputFormat="MM/DD/YYYY"
+            inputFormat="DD/MM"
             value={date}
             onChange={(value) => setDate(value)}
             renderInput={(params) => <TextField {...params} />}
