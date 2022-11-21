@@ -15,7 +15,7 @@ export const App: FC = () => {
         <Route path='/RestExample/' element={<NotesPage/>}/>
         <Route path='/RestExample/error-page-404' element={<ErrorPage statusCode={404}/>}/>
         <Route path='/RestExample/error-page-500' element={<ErrorPage statusCode={500}/>}/>
-        <Route path='*' element={<BlankPage/>}/>
+        <Route path='RestExample/*' element={<BlankPage/>}/>
       </Routes>
     </div>
   );
