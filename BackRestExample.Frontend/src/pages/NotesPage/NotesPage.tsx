@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {FC, useState} from 'react';
-import {mockNotes, Note} from "../../types/types";
+import {FC} from 'react';
+import {Note} from "../../types/types";
 import {NoteComponent} from "../../components/NoteComponent/NoteComponent";
 import './NotesPage.scss';
 import {CreateNodeComponent} from "../../components/CreateNodeComponent/CreateNodeComponent";

@@ -11,6 +11,7 @@ import {Dayjs} from "dayjs";
 import {date2string, string2date} from "../../utils/dayjsUtils";
 import {useNavigate} from "react-router-dom";
 import {useLongPress} from "use-long-press";
+import {NOTES_URL} from "../../utils/urlUtils";
 
 interface Props {
   note: Note,
@@ -35,7 +36,7 @@ export const NoteComponent: FC<Props> = (
   const [date, setDate] = useState<Dayjs | null>(string2date(note.date));
 
   const bindLongPress = useLongPress(isEditing ? null : () => {
-    navigate(import.meta.env.BASE_URL + 'notes/' + note.id)
+    navigate(NOTES_URL + note.id)
   }, {threshold: 1500})
 
   const onEditButton = (e: React.MouseEvent) => {
@@ -49,7 +50,7 @@ export const NoteComponent: FC<Props> = (
     setIsEditing(!isEditing)
   }
 
-  const onCardClick = (e: React.MouseEvent) => {
+  const onCardClick = () => {
     if (isEditing) {
       return;
     }
