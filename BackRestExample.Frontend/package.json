@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "push": "git subtree push --prefix dist origin gh-pages"
+    "push": "cd ../ && git subtree push --prefix ./BackRestExample.Frontend/dist origin gh-pages"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
